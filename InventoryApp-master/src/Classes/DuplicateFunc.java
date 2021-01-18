@@ -9,17 +9,23 @@ import JavaFX.AlertBox;
 
 import java.util.regex.Pattern;
 
-//clasa a fost scrisa pentru a separa functiile statice folosite pe tot parcursul programului
-// dar si functiile pentru popularea ObservableList care vor fi afisate in TableView
+/**
+ * Clasa a fost scrisa pentru a separa functiile statice folosite pe tot parcursul programului,
+ * dar si functiile pentru popularea ObservableList care vor fi afisate in TableView.
+ */
+
 public class DuplicateFunc {
 
     public ObservableList<Item> duplicate = FXCollections.observableArrayList();
     public ObservableList<User> duplicateU = FXCollections.observableArrayList();
     public MongoCursor<Document> cursor;
 
-    //functie de verificare login. mai exact, compara datele scrise la autentificare
-    //cu datele existente in baza de date
-    // in cazul in care nu exista o sa se declanseze o fereastra cu mesaj de eroare
+    /**
+     * Functie de verificare login. mai exact, compara datele scrise la autentificare
+     * cu datele existente in baza de date
+     * in cazul in care nu exista o sa se declanseze o fereastra cu mesaj de eroare.
+     */
+
     public static boolean verifyLogin(Document uDB, MongoCollection<Document> coll, String message, String title) {
         Document found = coll.find(uDB).first();
         if (found != null) {
@@ -29,7 +35,10 @@ public class DuplicateFunc {
         }
     }
 
-    //verificare daca adresa de mail se incadreaza in standardele specifice (contine @, de ex. yahoo.com)
+    /**
+     * Verificare daca adresa de mail se incadreaza in standardele specifice (contine @, de ex. yahoo.com).
+     */
+
     public static boolean isValidMail(String email) {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." +
                 "[a-zA-Z0-9_+&*-]+)*@" +
@@ -42,7 +51,10 @@ public class DuplicateFunc {
         return pat.matcher(email).matches();
     }
 
-    //verifica la inregistrare daca parola are litera mare, numere, caracter special si cel putin 8 caractere
+    /**
+     * Verificare la inregistrare daca parola are litera mare, numere, caracter special si cel putin 8 caractere.
+     */
+
     public static boolean isValid(String passwordhere) {
 
         Pattern specialCharPatten = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
@@ -58,7 +70,10 @@ public class DuplicateFunc {
         return flag;
     }
 
-    //folosita pentru a afisa in TableView item-ele din baza de date
+    /**
+     * Folosita pentru a afisa in TableView item-ele din baza de date.
+     */
+
     public ObservableList<Item> getItems(MongoCollection coll) {
         try {
             cursor = coll.find().iterator();
@@ -78,7 +93,10 @@ public class DuplicateFunc {
         return duplicate;
     }
 
-    //folosita pentru a afisa in TableView User-ii din baza de date
+    /**
+     * Folosita pentru a afisa in TableView User-ii din baza de date.
+     */
+
     public ObservableList<User> getUsers(MongoCollection coll) {
 
         cursor = coll.find().iterator();

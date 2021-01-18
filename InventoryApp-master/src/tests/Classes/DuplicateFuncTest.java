@@ -5,6 +5,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Test pentru a determina daca o adresa de mail este valida.
+ * Test pentru a determina daca o parola se incadreaza in cerinte.
+ */
 
 public class DuplicateFuncTest {
 

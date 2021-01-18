@@ -5,6 +5,11 @@ import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
+/**
+ * Clasa se utilizeaza pentru a face conexiunea la baza de date MongoDB.
+ * De asemenea, se pot accesa colectiile realizate pentru Admin, User si Item.
+ */
+
 public class ConnectionDB {
     public static String uri = "mongodb+srv://Alexa:alexa@mangodb-wcom9.mongodb.net/Login";
     public static MongoClientURI clientURI = new MongoClientURI(uri);

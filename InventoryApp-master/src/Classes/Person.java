@@ -1,17 +1,42 @@
 package Classes;
 
-//clasa abstracta din care se trag glasele principale care denumesc persoane
+/**
+ * Clasa abstracta din care se trag glasele principale care denumesc persoane
+ */
 
 public abstract class Person {
+
+    /**
+     * Prenumele persoane.
+     */
+
     private String firstName;
+
+    /**
+     * Numele persoanei.
+     */
+
     private String lastName;
+
+    /**
+     * Varsta.
+     */
+
     private int age;
+
+    /**
+     * Contructor cu toate atributele clasei
+     */
 
     public Person(String firstName, String lastName, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
     }
+
+    /**
+     * Contructor gol.
+     */
 
     public Person() {
 
@@ -40,5 +65,4 @@ public abstract class Person {
     public void setAge(int age) {
         this.age = age;
     }
-
 }

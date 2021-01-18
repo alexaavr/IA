@@ -3,6 +3,11 @@ package Classes;
 import DB.ConnectionDB;
 import org.bson.Document;
 
+/**
+ * Interfata este utilizata pentru a clarifica atributiile unui User
+ * si pentru a le separa de cele ale unui Admin.
+ */
+
 interface IUser {
     boolean findItem(Item item);
 
@@ -15,11 +20,17 @@ interface IUser {
     void deleteUser(User user);
 }
 
-//defineste functiile pe care le poate avea un User
+/**
+ * Defineste functiile pe care le poate avea un User
+ */
 
 public class UserManager implements IUser {
 
     ManagerDuplicate managerDuplicate = new ManagerDuplicate();
+
+    /**
+     * Functie care preia informatiile despre item si le transforma in tipul bazei de date.
+     */
 
     public static String getString(Item item) {
         Document d = new Document("Name", item.name);
@@ -33,6 +44,13 @@ public class UserManager implements IUser {
         return item.toString();
     }
 
+    /**
+     * Gasire item din baza de date.
+     *
+     * @param  item   obiectul care va fi cautat
+     * @return        un flag care arata valoarea booleana, daca s a gasit sau nu obiectul
+     */
+
     @Override
     public boolean findItem(Item item) {
         boolean flag = true;
@@ -41,6 +59,13 @@ public class UserManager implements IUser {
             flag = false;
         return flag;
     }
+
+    /**
+     * Gasire item din baza de date dupa codul acestuia.
+     *
+     * @param  item   obiectul care va fi cautat
+     * @return        un flag care arata valoarea booleana, daca s a gasit sau nu obiectul
+     */
 
     @Override
     public boolean findItemByCode(Item item) {
@@ -51,15 +76,34 @@ public class UserManager implements IUser {
         return flag;
     }
 
+    /**
+     * Afisare date item intr-un frame.
+     *
+     * @param  item   obiectul care va fi afisat
+     */
+
     @Override
     public String displayItem(Item item) {
         return getString(item);
     }
 
+    /**
+     * Functie pt update.
+     *
+     * @param  item   obiectul care va fi modificat
+     * @param  itemUp   obiectul cu care se va modifica.
+     */
+
     @Override
-    public void updateItem(Item item, Item item_up) {
-        managerDuplicate.updateItem(item, item_up);
+    public void updateItem(Item item, Item itemUp) {
+        managerDuplicate.updateItem(item, itemUp);
     }
+
+    /**
+     * Stergere user din baza de date.
+     *
+     * @param  user   obiectul care va fi sters.
+     */
 
     @Override
     public void deleteUser(User user) {

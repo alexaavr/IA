@@ -19,16 +19,29 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller pentru scena urmatoare dupa autentificarea ca Admin.
+ * Aceasta scena permite manipularea obiectelor comercializate.
+ */
+
 public class AfterLoginAdminController implements Initializable {
 
-    //necessary
+    /**
+     * Obiecte de tipul claselor create folosite penntru anumite functionalitati.
+     */
+
     private Item item = new Item();
     private Item itemToUP = new Item();
     private AdminManager adminManager = new AdminManager();
     private DuplicateFunc duplicateFunc = new DuplicateFunc();
     private UserManager userManager = new UserManager();
 
+    /**
+     * Obiecte JavaFX pentru popularea scenei curente.
+     */
+
     //FIRST INPUT
+
     @FXML
     private TextField nameInput = new TextField();
     @FXML
@@ -39,6 +52,7 @@ public class AfterLoginAdminController implements Initializable {
     private TextField priceInput = new TextField();
 
     //UPDATE
+
     @FXML
     private TextField nameInputUP = new TextField();
     @FXML
@@ -51,16 +65,19 @@ public class AfterLoginAdminController implements Initializable {
     private TextField codeInputToUP = new TextField();
 
     //SEARCH
+
     @FXML
     private TextField searchInput = new TextField();
     @FXML
     private TextArea text = new TextArea();
 
     //TEXT AREA
+
     @FXML
     private TextArea text2 = new TextArea();
 
     //TableView
+
     @FXML
     private TableView<Item> tableView;
     @FXML
@@ -73,7 +90,10 @@ public class AfterLoginAdminController implements Initializable {
     private TableColumn<Item, Integer> priceColl;
 
 
-    //CLEAR
+    /**
+     * Butonul Clear va sterge tot textul inserat in campurile de text.
+     */
+
     @FXML
     private void clearButtonAction() {
         nameInput.clear();
@@ -82,7 +102,9 @@ public class AfterLoginAdminController implements Initializable {
         priceInput.clear();
     }
 
-    //SEARCH VERIFY STOCK
+    /**
+     * Verificarea stocului.
+     */
     @FXML
     private void search() {
         if (searchInput.getText().equals("")) AlertBox.display("Alert", "You must complete all fields!");
@@ -93,7 +115,10 @@ public class AfterLoginAdminController implements Initializable {
         }
     }
 
-    //UPDATE
+    /**
+     * Butonul Update va inlocui toate datele pentru itemul selectat cu noile date inserate.
+     */
+
     @FXML
     private void updateItemButtonAction() {
         if (codeInputToUP.getText().equals("")) AlertBox.display("Alert", "You must complete the name field!");
@@ -123,6 +148,10 @@ public class AfterLoginAdminController implements Initializable {
             }
         }
     }
+
+    /**
+     * Functia este conceputa pentru a prelua datele din campurile de text si pentru a le transforma dupa caz.
+     */
 
     private void itemAction(Item item, TextField nameInputUP, TextField codeInputUP, TextField amountInputUP, TextField priceInputUP) {
         item.name = nameInputUP.getText().trim();

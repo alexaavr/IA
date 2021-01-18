@@ -6,7 +6,11 @@ import org.bson.conversions.Bson;
 
 import static Classes.UserManager.getString;
 
-//interfata este utilizata pentru a clarifica atributiile unui Admin si pentru a le separa de cele ale unui User
+/**
+ * Interfata este utilizata pentru a clarifica atributiile unui Admin
+ * si pentru a le separa de cele ale unui User.
+ */
+
 interface IAdmin {
     void addItem(Item item);
 
@@ -29,12 +33,26 @@ interface IAdmin {
     String displayUser(User user);
 }
 
+/**
+ * Clasa AdminManager inglobeaza tote functiile pe care un Admin le va folosi
+ * pe parcursul activitatii sale cu aplicatia.
+ * Toate functiile de adaugare, modificare si stergere sunt scrise pentru specificul bazei de date folosite, MongoDB.
+ */
+
 public class AdminManager implements IAdmin {
 
-    //variabila pentru a folosi functii care sunt la comun pentruAdmin si User
+    /**
+     * Variabila pentru a folosi functii care sunt la duplicat (pentru Admin si User).
+     */
+
     ManagerDuplicate managerDuplicate = new ManagerDuplicate();
 
-    //adaugare item in baza de date
+    /**
+     * Adaugare item in baza de date.
+     *
+     * @param  item   obiectul care va fi adaugat
+     */
+
     @Override
     public void addItem(Item item) {
         Document d = new Document("Name", item.name)
@@ -44,7 +62,12 @@ public class AdminManager implements IAdmin {
         ConnectionDB.collectionItem.insertOne(d);
     }
 
-    //stergere item din baza de date
+    /**
+     * Stergere item din baza de date.
+     *
+     * @param  item   obiectul care va fi sters
+     */
+
     @Override
     public void deleteItem(Item item) {
         Document d = new Document("Name", item.name)
@@ -57,7 +80,13 @@ public class AdminManager implements IAdmin {
         }
     }
 
-    //functie pentru a gasi un item in baza de date
+    /**
+     * Gasire item din baza de date.
+     *
+     * @param  item   obiectul care va fi cautat
+     * @return        un flag care arata valoarea booleana, daca s a gasit sau nu obiectul
+     */
+
     @Override
     public boolean findItem(Item item) {
         boolean flag = true;
@@ -67,24 +96,46 @@ public class AdminManager implements IAdmin {
         return flag;
     }
 
-    //afisare item intr-un frame
+    /**
+     * Afisare date item intr-un frame.
+     *
+     * @param  item   obiectul care va fi afisat
+     */
+
     @Override
     public String displayItem(Item item) {
         return getString(item);
     }
 
-    //functii comuna cu User, se gasesc in clasa ManagerDuplicate
+    /**
+     * Functie pt update.
+     *
+     * @param  item   obiectul care va fi modificat
+     * @param  itemUp   obiectul cu care se va modifica.
+     */
+
     @Override
     public void updateItem(Item item, Item itemUp) {
         managerDuplicate.updateItem(item, itemUp);
     }
+
+    /**
+     * Stergere user din baza de date.
+     *
+     * @param  user   obiectul care va fi sters.
+     */
 
     @Override
     public void deleteUser(User user) {
         managerDuplicate.deleteUser(user);
     }
 
-    //adaugare User in baza de date
+    /**
+     * Adaugare user in baza de date.
+     *
+     * @param  user   obiectul care va fi adaugat.
+     */
+
     @Override
     public void addUser(User user) {
         Document d = new Document("First Name", user.getFirstName())
@@ -96,7 +147,13 @@ public class AdminManager implements IAdmin {
         ConnectionDB.collectionLogin.insertOne(d);
     }
 
-    //Modificare User in baza de date
+    /**
+     * Functie pt update.
+     *
+     * @param  user   obiectul care va fi modificat
+     * @param  userUp   obiectul cu care se va modifica.
+     */
+
     @Override
     public void updateUser(User user, User userUp) {
         Document query = new Document("Username", user.username);
@@ -114,6 +171,13 @@ public class AdminManager implements IAdmin {
         }
     }
 
+    /**
+     * Gasire user in baza de date.
+     *
+     * @param  user   obiectul care va fi cautat
+     * @return        un flag care arata valoarea booleana, daca s a gasit sau nu obiectul
+     */
+
     @Override
     public boolean findUser(User user) {
         boolean flag = false;
@@ -122,6 +186,12 @@ public class AdminManager implements IAdmin {
             flag = true;
         return flag;
     }
+
+    /**
+     * Afisare date user intr-un frame.
+     *
+     * @param  user   obiectul care va fi afisat
+     */
 
     @Override
     public String displayUser(User user) {
@@ -138,5 +208,3 @@ public class AdminManager implements IAdmin {
         return user.toString();
     }
 }
-
-//toate functiile de adaugare, modificare si stergere sunt scrise pentru specificul bazei de date folosite, MongoDB

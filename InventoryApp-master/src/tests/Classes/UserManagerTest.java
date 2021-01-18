@@ -6,6 +6,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+/**
+ * Test pentru a determina daca un item cautat dupa cod se afla in baza de date sau nu.
+ */
+
 public class UserManagerTest {
 
     UserManager userManager = new UserManager();

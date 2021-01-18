@@ -1,12 +1,32 @@
 package Classes;
 
-//clasa cu atributele unui User
+/**
+ * Clasa cu atributele unui User
+ */
 
 public class User extends Person {
 
+    /**
+     * Sir de caractere pt autentificare.
+     */
+
     public String username;
+
+    /**
+     * Parola, sir de caractere pt autentificare (minim 8 caractere).
+     */
+
     public String password;
+
+    /**
+     * Adresa de mail a user - ului.
+     */
+
     private String mailAddressUser;
+
+    /**
+     * Contructor cu toate atributele clasei
+     */
 
     public User(String firstName, String lastName, int age, String username, String password, String mail_adress) {
         super(firstName, lastName, age);
@@ -15,9 +35,17 @@ public class User extends Person {
         this.mailAddressUser = mail_adress;
     }
 
+    /**
+     * Contructor cu username-ul.
+     */
+
     public User(String username) {
         this.username = username;
     }
+
+    /**
+     * Contructor gol.
+     */
 
     public User() {
         super();
@@ -30,6 +58,10 @@ public class User extends Person {
     public void setMailAddressUser(String mailAdressU) {
         this.mailAddressUser = mailAdressU;
     }
+
+    /**
+     * Tipul de afisare a datelor obiectului sub forma de sir de caractere.
+     */
 
     @Override
     public String toString() {

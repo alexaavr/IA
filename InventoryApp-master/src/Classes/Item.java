@@ -1,11 +1,38 @@
 package Classes;
-//clasa folosita pentru a defini obiectele comercializate
+
+/**
+ * Clasa folosita pentru a defini obiectele comercializate.
+ */
+
 public class Item {
-    //am incercat ca atributele sa fie cat mai generale pentru a se plia pe mai multe tipuri de market-uri
+
+    /**
+     * Numele obiectului de tip String.
+     */
+
     public String name;
+
+    /**
+     * Codul cu care va fi trecut in baza de date.
+     */
+
     public Integer code;
+
+    /**
+     * Cantitatea in care se comercializeaza.
+     */
+
     public Integer amount;
+
+    /**
+     * Pretul la care se vinde obiectul.
+     */
+
     public Integer price;
+
+    /**
+     * Constructor cu toate atributele.
+     */
 
     public Item(String name, Integer code, Integer amount, Integer price) {
         this.name = name;
@@ -14,16 +41,32 @@ public class Item {
         this.price = price;
     }
 
+    /**
+     * Cnstructor doar pentru nume.
+     */
+
     public Item(String name) {
         this.name = name;
     }
+
+    /**
+     * Contructor doar pentru cod.
+     */
 
     public Item(Integer code) {
         this.code = code;
     }
 
+    /**
+     * Contructor gol.
+     */
+
     public Item() {
     }
+
+    /**
+     * Tipul de afisare a datelor obiectului sub forma de sir de caractere
+     */
 
     @Override
     public String toString() {
@@ -66,6 +109,4 @@ public class Item {
     public void setPrice(Integer price) {
         this.price = price;
     }
-
-
 }
