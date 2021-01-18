@@ -16,13 +16,26 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller pentru scena pentru manipularea resurselor umane
+ * dupa autentificarea ca Admin.
+ */
+
 public class UserHandleController implements Initializable {
+
+    /**
+     * Obiecte de tipul claselor create folosite penntru anumite functionalitati.
+     */
 
     //NECESSARY
     private User user = new User();
     private User userUP = new User();
     private AdminManager adminManager = new AdminManager();
     private DuplicateFunc duplicateFunc = new DuplicateFunc();
+
+    /**
+     * Obiecte JavaFX pentru popularea scenei curente.
+     */
 
     @FXML
     private TextField usernameInput = new TextField();
@@ -60,7 +73,10 @@ public class UserHandleController implements Initializable {
     @FXML
     private TableView<User> tableView;
 
-    //CLEAR
+    /**
+     * Butonul Clear va sterge tot textul inserat in campurile de text.
+     */
+
     @FXML
     private void clearButtonAction() {
         usernameInput.clear();
@@ -71,7 +87,10 @@ public class UserHandleController implements Initializable {
         ageInput.clear();
     }
 
-    //SEARCH
+    /**
+     * Verificarea existentei persoanei.
+     */
+
     @FXML
     private void search() {
         if (searchInput.getText().equals("")) AlertBox.display("Alert", "You must complete all fields!");
@@ -90,7 +109,10 @@ public class UserHandleController implements Initializable {
         }
     }
 
-    //UPDATE
+    /**
+     * Butonul Update va inlocui toate datele pentru userul selectat cu noile date inserate.
+     */
+
     @FXML
     private void updateUserButtonAction() {
         if (usernameInput1.getText().equals("") || passwordInput1.getText().equals("") || mailInput1.getText().equals("") || firstnameInput1.getText().equals("")
@@ -121,7 +143,10 @@ public class UserHandleController implements Initializable {
         }
     }
 
-    //ADD
+    /**
+     * In momentul apasarii butonului de AddUser, user-ul se va adauga in lista.
+     */
+
     @FXML
     private void addUserButtonAction() {
         if (usernameInput.getText().equals("") || passwordInput.getText().equals("") || mailInput.getText().equals("") || firstnameInput.getText().equals("")
@@ -150,7 +175,10 @@ public class UserHandleController implements Initializable {
         }
     }
 
-    //DELETE
+    /**
+     * In momentul apasarii butonului de DeleteUser, user-ul se va sterge din lista.
+     */
+
     @FXML
     private void deleteUserButtonAction() {
         if (usernameInput.getText().equals("") || passwordInput.getText().equals("") || mailInput.getText().equals("") || firstnameInput.getText().equals("")
@@ -169,7 +197,10 @@ public class UserHandleController implements Initializable {
         }
     }
 
-    //CHANGE TO ITEM SCENE
+    /**
+     * In momentul apasarii butonului se va trece la scena pentru gestionare Item.
+     */
+
     @FXML
     private void itemHandlingButton() throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -178,7 +209,11 @@ public class UserHandleController implements Initializable {
         Main.window.getScene().setRoot(pane);
     }
 
-    //SNOUT
+    /**
+     * Butonul va iesi din aplicatie sau va ramane in aplicatie
+     * in functie de ce se alege in fereastra de confirmare.
+     */
+
     @FXML
     private void singOutButton() throws IOException {
         if (ConfirmBox.display("Alert!", " Are you sure you want to sing out?")) {
@@ -186,6 +221,10 @@ public class UserHandleController implements Initializable {
             Main.window.getScene().setRoot(pane);
         }
     }
+
+    /**
+     * Functie pentru populare TableView pentru User.
+     */
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -89,7 +89,6 @@ public class AfterLoginAdminController implements Initializable {
     @FXML
     private TableColumn<Item, Integer> priceColl;
 
-
     /**
      * Butonul Clear va sterge tot textul inserat in campurile de text.
      */
@@ -105,6 +104,7 @@ public class AfterLoginAdminController implements Initializable {
     /**
      * Verificarea stocului.
      */
+
     @FXML
     private void search() {
         if (searchInput.getText().equals("")) AlertBox.display("Alert", "You must complete all fields!");
@@ -160,7 +160,10 @@ public class AfterLoginAdminController implements Initializable {
         item.price = Integer.parseInt(priceInputUP.getText().trim());
     }
 
-    //DELETE
+    /**
+     * In momentul apasarii butonului de delete, item-ul se va sterge din stoc.
+     */
+
     @FXML
     private void deleteItemButtonAction() {
         if (nameInput.getText().equals("") || codeInput.getText().equals("") || amountInput.getText().equals("") || priceInput.getText().equals(""))
@@ -182,7 +185,10 @@ public class AfterLoginAdminController implements Initializable {
         }
     }
 
-    //ADD
+    /**
+     * In momentul apasarii butonului de AddItem, item-ul se va adauga in stoc.
+     */
+
     @FXML
     private void addItemButtonAction() {
         if (nameInput.getText().equals("") || codeInput.getText().equals("") || amountInput.getText().equals("") || priceInput.getText().equals(""))
@@ -204,7 +210,10 @@ public class AfterLoginAdminController implements Initializable {
         }
     }
 
-    //USER HANDLE
+    /**
+     * In momentul apasarii butonului se va trece la scena pentru gestionare User.
+     */
+
     @FXML
     private void userHandleButtonAction() throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -213,7 +222,11 @@ public class AfterLoginAdminController implements Initializable {
         Main.window.getScene().setRoot(pane);
     }
 
-    //SNOUT
+    /**
+     * Butonul va iesi din aplicatie sau va ramane in aplicatie
+     * in functie de ce se alege in fereastra de confirmare.
+     */
+
     @FXML
     private void singOutButtonAction() throws IOException {
         if (ConfirmBox.display("Alert!", " Are you sure you want to sing out?")) {
@@ -221,6 +234,10 @@ public class AfterLoginAdminController implements Initializable {
             Main.window.getScene().setRoot(pane);
         }
     }
+
+    /**
+     * Functie pentru populare TableView pentru Item.
+     */
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -16,7 +16,16 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller pentru scena pentru public.
+ */
+
 public class publicController implements Initializable {
+
+    /**
+     * Obiecte de tipul claselor create folosite penntru anumite functionalitati.
+     */
+
     //NECESSARY
     @FXML
     private Stage stage = new Stage();
@@ -25,7 +34,12 @@ public class publicController implements Initializable {
     private DuplicateFunc duplicateFunc = new DuplicateFunc();
     private Admin admin = new Admin();
 
+    /**
+     * Obiecte JavaFX pentru popularea scenei curente.
+     */
 
+    @FXML
+    private Button re = new Button();
     @FXML
     private TextField searchInput = new TextField();
     @FXML
@@ -35,8 +49,10 @@ public class publicController implements Initializable {
     @FXML
     private TableView<Item> tableView;
 
+    /**
+     * Verificarea stocului.
+     */
 
-    //SEARCH
     @FXML
     private void search() {
         if (searchInput.getText().equals("")){ AlertBox.display("Alert", "You must complete all fields!");}
@@ -47,13 +63,19 @@ public class publicController implements Initializable {
         }
     }
 
+    /**
+     * Buton care duce la scena anterioara.
+     */
+
     @FXML
     private void backButtonAction() throws IOException {
         Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("MainPage.fxml"));
         Main.window.getScene().setRoot(LoginAdminParent);
     }
 
-    //QUIT BUTTON ACTION
+    /**
+     * Buton care permite iesirea din aplicatie.
+     */
 
     @FXML
     private void quitButtonAction() {
@@ -61,8 +83,10 @@ public class publicController implements Initializable {
         else stage.getScene().getWindow();
     }
 
-    @FXML
-    Button re = new Button();
+    /**
+     * Functie pentru rezervarea unui obiect.
+     * Cand butonul s a apsat se si scade cantitatea din stoc.
+     */
 
     @FXML
     public void reserveButton(){
@@ -80,6 +104,10 @@ public class publicController implements Initializable {
             }
         }
     }
+
+    /**
+     * Functie pentru populare TableView pentru Item.
+     */
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tableView.setItems(duplicateFunc.getItems(ConnectionDB.collectionItem));

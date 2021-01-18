@@ -7,6 +7,10 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+/**
+ * Clasa principala, de start, care contine initializarea
+ * ferestrei si aprimei scene.
+ */
 
 public class Main extends Application {
 
@@ -36,4 +40,3 @@ public class Main extends Application {
         window.show();
     }
 }
-

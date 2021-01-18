@@ -70,12 +70,10 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item{ \n" +
-                "Name = " + name + '\n' +
-                "Code = " + code + '\n' +
-                "Amount = " + amount + '\n' +
-                "Price = " + price +
-                "}\n";
+        return  "Name: " + name + '\n' +
+                "Code: " + code + '\n' +
+                "Amount: " + amount + '\n' +
+                "Price: " + price + '\n';
     }
 
     public String getName() {

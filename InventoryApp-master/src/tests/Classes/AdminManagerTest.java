@@ -13,6 +13,7 @@ import static org.junit.Assert.assertEquals;
  */
 
 public class AdminManagerTest {
+
     AdminManager adminManager = new AdminManager();
     Item item = new Item("Something");
     User user = new User("something wrong");

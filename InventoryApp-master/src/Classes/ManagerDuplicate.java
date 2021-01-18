@@ -7,12 +7,12 @@ import org.bson.conversions.Bson;
 /**
  * Interfata folosita pentru functiile duplicate
  */
+
 interface IDuplicate {
     void updateItem(Item item, Item item_up);
 
     void deleteUser(User user);
 }
-
 
 /**
  * Functii folosite atat de User cat si de Admin
@@ -27,6 +27,7 @@ public class ManagerDuplicate implements IDuplicate {
      * @param  item   obiectul care va fi modificat
      * @param  itemUp   obiectul cu care se va modifica.
      */
+
     @Override
     public void updateItem(Item item, Item itemUp) {
         Document query = new Document("Code", item.code);
@@ -47,6 +48,7 @@ public class ManagerDuplicate implements IDuplicate {
      *
      * @param  user   obiectul care va fi sters
      */
+
     @Override
     public void deleteUser(User user) {
         Document d = new Document("First Name", user.getFirstName())

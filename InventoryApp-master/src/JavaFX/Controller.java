@@ -17,11 +17,19 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller pentru scena de autentificarea ca User.
+ */
+
 public class Controller implements Initializable {
 
-    //GENERAL USE
+    /**
+     * Obiecte JavaFX pentru popularea scenei curente.
+     */
+
     @FXML
     private Stage stage = new Stage();
+
     //LOGIN SCENE
     @FXML
     private TextField usernameInput = new TextField();
@@ -34,13 +42,20 @@ public class Controller implements Initializable {
     @FXML
     private CheckBox checkBoxLogin = new CheckBox();
 
+    /**
+     * Buton care duce la scena anterioara.
+     */
+
     @FXML
     private void backButtonAction() throws IOException {
         Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("MainPage.fxml"));
         Main.window.getScene().setRoot(LoginAdminParent);
     }
 
-    //QUIT BUTTON ACTION
+    /**
+     * Buton care permite iesirea din aplicatie.
+     */
+
     @FXML
     private void quitButtonAction() {
         stage = (Stage) quitButton.getScene().getWindow();
@@ -48,14 +63,19 @@ public class Controller implements Initializable {
         else stage.getScene().getWindow();
     }
 
-    //CLEAR BUTTON ACTION
+    /**
+     * Butonul Clear va sterge tot textul inserat in campurile de text.
+     */
+
     @FXML
     private void clearButtonAction() {
         usernameInput.clear();
         passInput.clear();
     }
 
-    //LOGIN BUTTON ACTION
+    /**
+     * Permite autentificarea.
+     */
 
     @FXML
     private void loginButtonAction() throws IOException {
@@ -66,6 +86,10 @@ public class Controller implements Initializable {
             pass(passInput);
         }
     }
+
+    /**
+     * Verifica parola.
+     */
 
     private void pass(TextField passInput) throws IOException {
         if (usernameInput.getText().equals("") || passInput.getText().equals(""))
@@ -79,22 +103,31 @@ public class Controller implements Initializable {
         }
     }
 
+    /**
+     * Trece in scena de autentificare ca Admin.
+     */
 
-    //LOGIN AS ADMIN BUTTON
     @FXML
     private void loginAdminButtonAction() throws IOException {
         Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("LoginAsAdmin.fxml"));
         Main.window.getScene().setRoot(LoginAdminParent);
     }
 
-    //REGISTER BUTTON
+    /**
+     * Trece in scena de inregistrare.
+     */
+
     @FXML
     private void registerButtonAction() throws IOException {
         Parent pane = FXMLLoader.load(getClass().getResource("Register.fxml"));
         Main.window.getScene().setRoot(pane);
     }
 
-    //CHECK BOX ACTION
+    /**
+     * Functie care determina daca check box-ul este bifat sau nu
+     * pentru a arata sau ascunde parola.
+     */
+
     @FXML
     private void checkBoxLoginAction() {
         LoginAsAdminController.checkBox(checkBoxLogin, passInputVisible, passInput);

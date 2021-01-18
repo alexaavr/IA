@@ -160,14 +160,14 @@ public class AdminManager implements IAdmin {
         Document found = (Document) ConnectionDB.collectionLogin.find(query).first();
 
         if (found != null) {
-            Bson updatedvalue = new Document("First Name", userUp.getFirstName())
+            Bson updatedValue = new Document("First Name", userUp.getFirstName())
                     .append("Last Name", userUp.getLastName())
                     .append("Age", userUp.getAge())
                     .append("Username", userUp.username)
                     .append("Password", userUp.password)
                     .append("Mail adress", userUp.getMailAddressUser());
-            Bson updateoperation = new Document("$set", updatedvalue);
-            ConnectionDB.collectionLogin.updateOne(found, updateoperation);
+            Bson updateOperation = new Document("$set", updatedValue);
+            ConnectionDB.collectionLogin.updateOne(found, updateOperation);
         }
     }
 

@@ -14,15 +14,27 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller pentru scena urmatoare dupa autentificarea ca User.
+ * Aceasta scena permite manipularea obiectelor comercializate.
+ */
+
 public class AfterLoginUserController implements Initializable {
 
-    //NECESSARY
+    /**
+     * Obiecte de tipul claselor create folosite penntru anumite functionalitati.
+     */
+
     private User user = new User();
     private Item item = new Item();
     private Item itemToUP = new Item();
     private UserManager userManager = new UserManager();
     private AdminManager adminManager = new AdminManager();
     private DuplicateFunc duplicateFunc = new DuplicateFunc();
+
+    /**
+     * Obiecte JavaFX pentru popularea scenei curente.
+     */
 
     //TEXT
     @FXML
@@ -63,6 +75,10 @@ public class AfterLoginUserController implements Initializable {
     @FXML
     private TableView<Item> tableView;
 
+    /**
+     * Functia este conceputa pentru a prelua datele din campurile de text si pentru a le transforma dupa caz.
+     */
+
     static void userAction(User user, TextField usernameInput, TextField passwordInput, TextField mailInput, TextField firstnameInput, TextField lastnameInput, TextField ageInput) {
         user.username = usernameInput.getText().trim();
         user.password = passwordInput.getText().trim();
@@ -72,7 +88,10 @@ public class AfterLoginUserController implements Initializable {
         user.setAge((Integer.parseInt(ageInput.getText().trim())));
     }
 
-    //CLEAR
+    /**
+     * Butonul Clear va sterge tot textul inserat in campurile de text.
+     */
+
     @FXML
     private void clearButtonAction() {
         nameInputUP.clear();
@@ -81,7 +100,10 @@ public class AfterLoginUserController implements Initializable {
         priceInputUP.clear();
     }
 
-    //UPDATE
+    /**
+     * Butonul Update va inlocui toate datele pentru itemul selectat cu noile date inserate.
+     */
+
     @FXML
     private void updateItemButtonAction() {
         if (codeInputToUP.getText().equals(""))
@@ -115,7 +137,10 @@ public class AfterLoginUserController implements Initializable {
         }
     }
 
-    //SEARCH
+    /**
+     * Verificarea stocului.
+     */
+
     @FXML
     private void search() {
         if (searchInput.getText().equals("")) AlertBox.display("Alert", "You must complete all fields!");
@@ -126,7 +151,11 @@ public class AfterLoginUserController implements Initializable {
         }
     }
 
-    //EXIT
+    /**
+     * Butonul va iesi din aplicatie sau va ramane in aplicatie
+     * in functie de ce se alege in fereastra de confirmare.
+     */
+
     @FXML
     private void singOutButton() throws IOException {
         if (ConfirmBox.display("Alert!", " Are you sure you want to sing out?")) {
@@ -135,7 +164,10 @@ public class AfterLoginUserController implements Initializable {
         }
     }
 
-    //DELETE
+    /**
+     * Functie pentru stergerea contului.
+     */
+
     @FXML
     private void deleteAccountButton() throws IOException {
         if (usernameInput.getText().equals("") || passwordInput.getText().equals("") || mailInput.getText().equals("") || firstnameInput.getText().equals("")
@@ -161,6 +193,10 @@ public class AfterLoginUserController implements Initializable {
             }
         }
     }
+
+    /**
+     * Functie pentru populare TableView pentru Item.
+     */
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

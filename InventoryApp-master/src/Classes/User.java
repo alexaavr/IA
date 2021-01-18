@@ -65,14 +65,12 @@ public class User extends Person {
 
     @Override
     public String toString() {
-        return "User{ \n" +
-                "Firstname = " + getFirstName() + "\n" +
-                "Lastname = " + getLastName() + "\n" +
-                "Username = " + username + '\n' +
-                "Password = " + password + '\n' +
-                "Mail address = " + mailAddressUser + '\n' +
-                "Age = " + getAge() + "\n" +
-                '}';
+        return  "Firstname: " + getFirstName() + "\n" +
+                "Lastname: " + getLastName() + "\n" +
+                "Username: " + username + '\n' +
+                "Password: " + password + '\n' +
+                "Mail address: " + mailAddressUser + '\n' +
+                "Age: " + getAge() + "\n";
     }
 
     public String getUsername() {

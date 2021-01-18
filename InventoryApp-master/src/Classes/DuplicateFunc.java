@@ -16,6 +16,11 @@ import java.util.regex.Pattern;
 
 public class DuplicateFunc {
 
+    /**
+     * Obiectele pentru listele din TableView si
+     * cursorul folosit pentru a cauta in baza de date.
+     */
+
     public ObservableList<Item> duplicate = FXCollections.observableArrayList();
     public ObservableList<User> duplicateU = FXCollections.observableArrayList();
     public MongoCursor<Document> cursor;
@@ -55,16 +60,16 @@ public class DuplicateFunc {
      * Verificare la inregistrare daca parola are litera mare, numere, caracter special si cel putin 8 caractere.
      */
 
-    public static boolean isValid(String passwordhere) {
+    public static boolean isValid(String passwordHere) {
 
         Pattern specialCharPatten = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
         Pattern UpperCasePatten = Pattern.compile("[A-Z ]");
         Pattern lowerCasePatten = Pattern.compile("[a-z ]");
         Pattern digitCasePatten = Pattern.compile("[0-9 ]");
         boolean flag = true;
-        if (passwordhere.length() < 8 || !(specialCharPatten.matcher(passwordhere).find())
-                || !(UpperCasePatten.matcher(passwordhere).find()) || !(lowerCasePatten.matcher(passwordhere).find())
-                || !(digitCasePatten.matcher(passwordhere).find()))
+        if (passwordHere.length() < 8 || !(specialCharPatten.matcher(passwordHere).find())
+                || !(UpperCasePatten.matcher(passwordHere).find()) || !(lowerCasePatten.matcher(passwordHere).find())
+                || !(digitCasePatten.matcher(passwordHere).find()))
             flag = false;
 
         return flag;

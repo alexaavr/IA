@@ -17,15 +17,27 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller pentru scena de inregistrare ca User.
+ */
+
 public class RegisterController implements Initializable {
 
+    /**
+     * Obiecte de tipul claselor create folosite penntru anumite functionalitati.
+     */
+
     //GENERAL USE
-    @FXML
-    private Stage stage = new Stage();
     private User user = new User();
     private AdminManager adminManager = new AdminManager();
 
+    /**
+     * Obiecte JavaFX pentru popularea scenei curente.
+     */
+
     //LOGIN SCENE
+    @FXML
+    private Stage stage = new Stage();
     @FXML
     private TextField usernameInput = new TextField();
     @FXML
@@ -45,13 +57,20 @@ public class RegisterController implements Initializable {
     @FXML
     private CheckBox checkBoxRegister = new CheckBox();
 
-    //CHECK BOX ACTION
+    /**
+     * Functie care determina daca check box-ul este bifat sau nu
+     * pentru a arata sau ascunde parola.
+     */
+
     @FXML
     private void checkBoxRegisterAction() {
         LoginAsAdminController.checkBox(checkBoxRegister, passInputVisible, passInput);
     }
 
-    //QUIT BUTTON ACTION
+    /**
+     * Buton care permite iesirea din aplicatie.
+     */
+
     @FXML
     private void quitButtonAction() {
         stage = (Stage) quitButton.getScene().getWindow();
@@ -59,7 +78,10 @@ public class RegisterController implements Initializable {
         else stage.getScene().getWindow();
     }
 
-    //CLEAR BUTTON ACTION
+    /**
+     * Butonul Clear va sterge tot textul inserat in campurile de text.
+     */
+
     @FXML
     private void clearButtonAction() {
         firstnameInput.clear();
@@ -70,14 +92,20 @@ public class RegisterController implements Initializable {
         ageInput.clear();
     }
 
-    //BACK BUTTON ACTION
+    /**
+     * Buton care duce la scena anterioara.
+     */
+
     @FXML
     private void backButtonAction() throws IOException {
         Parent RegisterParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
         Main.window.getScene().setRoot(RegisterParent);
     }
 
-    //REGISTER BUTTON ACTION
+    /**
+     * Buton de inregistrare.
+     */
+
     @FXML
     private void registerButtonAction() {
         if(checkBoxRegister.isSelected()){
@@ -87,6 +115,10 @@ public class RegisterController implements Initializable {
             pass(passInput);
         }
     }
+
+    /**
+     * Verifica parola.
+     */
 
     private void pass(TextField passInput_visible) {
         if (usernameInput.getText().equals("") || passInput_visible.getText().equals("") || mailInput.getText().equals("") || firstnameInput.getText().equals("")
