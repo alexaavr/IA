@@ -1,18 +1,9 @@
 package Java;
 
 import DB.ConnectionDB;
+import Interfaces.IDuplicate;
 import org.bson.Document;
 import org.bson.conversions.Bson;
-
-/**
- * Interfata folosita pentru functiile duplicate
- */
-
-interface IDuplicate {
-    void updateItem(Item item, Item item_up);
-
-    void deleteUser(User user);
-}
 
 /**
  * Functii folosite atat de User cat si de Admin

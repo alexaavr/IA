@@ -1,37 +1,11 @@
 package Java;
 
 import DB.ConnectionDB;
+import Interfaces.IAdmin;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
 import static Java.UserManager.getString;
-
-/**
- * Interfata este utilizata pentru a clarifica atributiile unui Admin
- * si pentru a le separa de cele ale unui User.
- */
-
-interface IAdmin {
-    void addItem(Item item);
-
-    void deleteItem(Item item);
-
-    boolean findItem(Item item);
-
-    String displayItem(Item item);
-
-    void updateItem(Item item, Item item_up);
-
-    void deleteUser(User user);
-
-    void addUser(User user);
-
-    void updateUser(User user, User user_up);
-
-    boolean findUser(User user);
-
-    String displayUser(User user);
-}
 
 /**
  * Clasa AdminManager inglobeaza tote functiile pe care un Admin le va folosi
@@ -45,7 +19,8 @@ public class AdminManager implements IAdmin {
      * Variabila pentru a folosi functii care sunt la duplicat (pentru Admin si User).
      */
 
-    ManagerDuplicate managerDuplicate = new ManagerDuplicate();
+    ManagerDuplicate managerDuplicate;
+    public AdminManager() { 	managerDuplicate = new ManagerDuplicate();}
 
     /**
      * Adaugare item in baza de date.

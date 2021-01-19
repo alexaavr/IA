@@ -1,24 +1,8 @@
 package Java;
 
 import DB.ConnectionDB;
+import Interfaces.IUser;
 import org.bson.Document;
-
-/**
- * Interfata este utilizata pentru a clarifica atributiile unui User
- * si pentru a le separa de cele ale unui Admin.
- */
-
-interface IUser {
-    boolean findItem(Item item);
-
-    boolean findItemByCode(Item item);
-
-    String displayItem(Item item);
-
-    void updateItem(Item item, Item item_up);
-
-    void deleteUser(User user);
-}
 
 /**
  * Defineste functiile pe care le poate avea un User
@@ -26,7 +10,8 @@ interface IUser {
 
 public class UserManager implements IUser {
 
-    ManagerDuplicate managerDuplicate = new ManagerDuplicate();
+    ManagerDuplicate managerDuplicate;
+    public UserManager() { 	managerDuplicate = new ManagerDuplicate();}
 
     /**
      * Functie care preia informatiile despre item si le transforma in tipul bazei de date.
