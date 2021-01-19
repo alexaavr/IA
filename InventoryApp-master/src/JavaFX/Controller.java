@@ -1,6 +1,6 @@
 package JavaFX;
 
-import Classes.DuplicateFunc;
+import Java.DuplicateFunc;
 import DB.ConnectionDB;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

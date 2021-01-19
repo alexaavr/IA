@@ -1,6 +1,6 @@
 package JavaFX;
 
-import Classes.*;
+import Java.*;
 import DB.ConnectionDB;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

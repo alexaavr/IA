@@ -1,8 +1,8 @@
 package JavaFX;
 
-import Classes.AdminManager;
-import Classes.DuplicateFunc;
-import Classes.User;
+import Java.AdminManager;
+import Java.DuplicateFunc;
+import Java.User;
 import DB.ConnectionDB;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
